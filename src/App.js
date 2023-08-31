@@ -8,7 +8,25 @@ class App extends Component {
   //THIS is a class FIELD, this remove the necessity of use constructors  
   state = {
     name: 'Vic',
-    counter: 0
+    counter: 0,
+    posts: [
+      {
+        id: 1,
+        title: "Titulo 1",
+        body: "Corpo 3"
+      },
+      {
+        id: 2,
+        title: "Titulo 2",
+        body: "Corpo 3"
+      },
+      {
+        id: 3,
+        title: "Titulo 3",
+        body: "Corpo 3"
+      }
+
+    ]
   }
 
   // class fields made me depreciated 
@@ -37,27 +55,16 @@ class App extends Component {
   render() {
 
     const nome  = this.state.nome
-
-    const { name, counter } = this.state;
+    const { name, counter, posts } = this.state;
 
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-        <p onClick={this.handlePClick}>
-          {name}
-        </p>
-
-          <a
-            onClick={this.handleAClick}
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Este é o link
-          </a>
-        </header>
+      <div className="App">       
+      {posts.map(post => (   
+        <>
+          <h1 key={post.id}>{post.title}</h1>
+          <p>{post.body}</p> 
+          </>      
+        ))}
       </div>
     );
   }
